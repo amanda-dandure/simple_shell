@@ -2,8 +2,8 @@
 
 /**
  * myescape - Function that escapes the shell
- * @info: Containing potential arg used to maintain const func prototype
- * Return: escapes with a given escape status [0] info.argv[0] != "escape"
+ * @info: Has potential arg used const func prototype
+ * Return: Escapes with a given escape status
  */
 
 int myescape(info_t *info)
@@ -80,7 +80,7 @@ int _mycd(info_t *info)
 
 /**
  * _myassist - Function that changes the current directory of the process
- * @info: Containing potential arg used to maintain const func prototype
+ * @info: Has potential arg used const func prototype
  * Return: 0 [always]
  */
 
