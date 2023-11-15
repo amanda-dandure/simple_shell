@@ -27,7 +27,7 @@ size_t ls_len(const list_t *h)
 char **ls_to_str(list_t *head)
 {
     list_t *node = head;
-    size_t p = list_len(head), q;
+    size_t p = ls_len(head), q;
     char **strs;
     char *str;
 
@@ -66,11 +66,11 @@ size_t print_ls(const list_t *h)
 
     while (h)
     {
-        _puts(convert_number(h->num, 10, 0));
+        _putss(convert_num(h->num, 10, 0));
         _putchar(':');
         _putchar(' ');
-        _puts(h->str ? h->str : "(nil)");
-        _puts("\n");
+        _putss(h->str ? h->str : "(nil)");
+        _putss("\n");
         h = h->next;
         p++;
     }
@@ -91,7 +91,7 @@ list_t *node_starts(list_t *node, char *prefix, char c)
 
     while (node)
     {
-        p = starts_with(node->str, prefix);
+        p = start_hay(node->str, prefix);
         if (p && ((c == -1) || (*p == c)))
             return (node);
         node = node->next;

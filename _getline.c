@@ -17,11 +17,11 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 	{
 		free(*buf);
 		*buf = NULL;
-		signal(SIGINT, sigintHandler);
+		signal(SIGINT, siginthandler);
 #if USE_GETLINE
 		r = getline(buf, &len_p, stdin);
 #else
-		r = _getline(info, buf, &len_p);
+		r = _getlines(info, buf, &len_p);
 #endif
 		if (r > 0)
 		{
@@ -31,8 +31,8 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 				r--;
 			}
 			info->linecount_flag = 1;
-			remove_comments(*buf);
-			build_history_list(info, *buf, info->histcount++);
+			rem_comments(*buf);
+			build_past_list(info, *buf, info->histcount++);
 			{
 				*len = r;
 				info->cmd_buf = buf;
@@ -64,7 +64,7 @@ ssize_t get_inputs(info_t *info)
 		j = i;
 		p = buf + i;
 
-		check_chain(info, buf, &j, i, len);
+		check_chains(info, buf, &j, i, len);
 		while (j < len)
 		{
 			if (is_chain(info, buf, &j))
@@ -161,7 +161,7 @@ int _getlines(info_t *info, char **ptr, size_t *length)
 
 void siginthandler(__attribute__((unused))int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
+	_putss("\n");
+	_putss("$ ");
 	_putchar(BUF_FLUSH);
 }

@@ -19,7 +19,7 @@ list_t *add_nodes(list_t **head, const char *str, int num)
     new_head = malloc(sizeof(list_t));
     if (!new_head)
         return (NULL);
-    _memset((void *)new_head, 0, sizeof(list_t));
+    memset((void *)new_head, 0, sizeof(list_t));
     new_head->num = num;
     if (str)
     {
@@ -56,7 +56,7 @@ list_t *add_nodes_end(list_t **head, const char *str, int num)
     new_node = malloc(sizeof(list_t));
     if (!new_node)
         return (NULL);
-    _memset((void *)new_node, 0, sizeof(list_t));
+    memset((void *)new_node, 0, sizeof(list_t));
     new_node->num = num;
     if (str)
     {
@@ -90,8 +90,8 @@ size_t print_ls_str(const list_t *h)
 
     while (h)
     {
-        _puts(h->str ? h->str : "(nil)");
-        _puts("\n");
+        _putss(h->str ? h->str : "(nil)");
+        _putss("\n");
         h = h->next;
         p++;
     }

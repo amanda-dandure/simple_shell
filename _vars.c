@@ -89,7 +89,7 @@ int rep_alias(info_t *info)
 
     for (b = 0; b < 10; b++)
     {
-        node = node_starts_with(info->alias, info->argv[0], '=');
+        node = node_starts(info->alias, info->argv[0], '=');
         if (!node)
             return (0);
         free(info->argv[0]);
@@ -124,24 +124,24 @@ int rep_var(info_t *info)
 
         if (!_strcmp(info->argv[b], "$?"))
         {
-            replace_string(&(info->argv[b]),
-                           _strdup(convert_number(info->status, 10, 0)));
+            rep_str(&(info->argv[b]),
+                           _strdup(convert_num(info->status, 10, 0)));
             continue;
         }
         if (!_strcmp(info->argv[b], "$$"))
         {
-            replace_string(&(info->argv[b]),
-                           _strdup(convert_number(getpid(), 10, 0)));
+            rep_str(&(info->argv[b]),
+                           _strdup(convert_num(getpid(), 10, 0)));
             continue;
         }
-        node = node_starts_with(info->env, &info->argv[b][1], '=');
+        node = node_starts(info->env, &info->argv[b][1], '=');
         if (node)
         {
-            replace_string(&(info->argv[b]),
+            rep_str(&(info->argv[b]),
                            _strdup(_strchr(node->str, '=') + 1));
             continue;
         }
-        replace_string(&info->argv[b], _strdup(""));
+        rep_str(&info->argv[b], _strdup(""));
     }
     return (0);
 }

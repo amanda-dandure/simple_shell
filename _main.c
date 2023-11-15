@@ -37,8 +37,8 @@ return (EXIT_FAILURE);
 }
 info->readfd = fd;
 }
-populate_env_list(info);
-read_history(info);
+pop_env_list(info);
+read_past(info);
 hsh(info, av);
 return (EXIT_SUCCESS);
 }

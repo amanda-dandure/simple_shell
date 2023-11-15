@@ -128,21 +128,21 @@ char *find_path(info_t *, char *, char *);
 int loophsh(char **);
 
 /* _errors.c */
-void _puts(char *);
+void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
-/* _string.c */
+/* _string1.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *start_hay(const char *, const char *);
 char *_strcat(char *, char *);
 
-/* _string1.c */
+/* _string2.c */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
-void _puts(char *);
+void _putss(char *);
 int _putchar(char);
 
 /* _escape.c */
@@ -160,7 +160,7 @@ void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
 /* _mem.c */
-int bfree(void **);
+int b_free(void **);
 
 /* _atoi.c */
 int collaborative(info_t *);
@@ -204,7 +204,7 @@ int pop_env_list(info_t *);
 /* _getenv.c */
 char **get_environment(info_t *);
 int _unsetenv(info_t *, char *);
-int _setenvironment(info_t *, char *, char *);
+int _setenv(info_t *, char *, char *);
 
 /* _past.c */
 char *get_past_file(info_t *info);

@@ -52,12 +52,12 @@ char *_strdup(const char *str)
 /**************************  function 2 *********************************************/
 
 /**
- * _puts - Function prints an input str
+ * _putss - Function prints an input str
  * @str: This is the str to be printed
  * Return: void
  */
 
-void _puts(char *str)
+void _putss(char *str)
 {
     int i = 0;
 
